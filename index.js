@@ -1,33 +1,27 @@
 import runServer from './server.js';
 
-// info is called when you create your Battlesnake on play.battlesnake.com
-// and controls your Battlesnake's appearance
-// TIP: If you open your Battlesnake URL in a browser you should see this data
+
 function info() {
   console.log("INFO");
 
   return {
     apiversion: "1",
-    author: "",       // TODO: Your Battlesnake Username
-    color: "#888888", // TODO: Choose color
-    head: "default",  // TODO: Choose head
-    tail: "default",  // TODO: Choose tail
+    author: "",       
+    color: "#888888", 
+    head: "default", 
+    tail: "default", 
   };
 }
 
-// start is called when your Battlesnake begins a game
 function start(gameState) {
   console.log("GAME START");
 }
 
-// end is called when your Battlesnake finishes a game
 function end(gameState) {
   console.log("GAME OVER\n");
 }
 
-// move is called on every turn and returns your next move
-// Valid moves are "up", "down", "left", or "right"
-// See https://docs.battlesnake.com/api/example-move for available data
+
 function move(gameState) {
 
   let isMoveSafe = {
@@ -37,20 +31,19 @@ function move(gameState) {
     right: true
   };
 
-  // We've included code to prevent your Battlesnake from moving backwards
   const myHead = gameState.you.body[0];
   const myNeck = gameState.you.body[1];
 
-  if (myNeck.x < myHead.x) {        // Neck is left of head, don't move left
+  if (myNeck.x < myHead.x) {        
     isMoveSafe.left = false;
 
-  } else if (myNeck.x > myHead.x) { // Neck is right of head, don't move right
+  } else if (myNeck.x > myHead.x) { 
     isMoveSafe.right = false;
 
-  } else if (myNeck.y < myHead.y) { // Neck is below head, don't move down
+  } else if (myNeck.y < myHead.y) { 
     isMoveSafe.down = false;
 
-  } else if (myNeck.y > myHead.y) { // Neck is above head, don't move up
+  } else if (myNeck.y > myHead.y) { 
     isMoveSafe.up = false;
   }
 
