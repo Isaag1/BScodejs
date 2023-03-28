@@ -1,1 +1,2 @@
 # BScodejs
+fixing code
