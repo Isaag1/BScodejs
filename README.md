@@ -1,2 +1,2 @@
-# BScodejs
+# BattleSnakecodejs
 fixing code
